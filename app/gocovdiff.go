@@ -185,6 +185,7 @@ fileLoop:
 
 	err = parseProfiles(f.covFile, func(fn string, block profileBlock) {
 		log.Println("PARSING FILE:", fn)
+		log.Println("MODULE TO TRIM: ", f.module+"/")
 		fn = strings.TrimPrefix(fn, f.module+"/")
 		testedFiles[fn] = true
 		fStat := fileCoverage[fn]
