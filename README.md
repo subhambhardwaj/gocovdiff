@@ -1,6 +1,6 @@
 # gocovdiff
 
-[![Build Status](https://github.com/vearutop/gocovdiff/workflows/test-unit/badge.svg)](https://github.com/vearutop/gocovdiff/actions?query=branch%3Amaster+workflow%3Atest-unit)
+[![Build Status](https://github.com/subhambhardwaj/gocovdiff/workflows/test-unit/badge.svg)](https://github.com/subhambhardwaj/gocovdiff/actions?query=branch%3Amaster+workflow%3Atest-unit)
 [![Coverage Status](https://codecov.io/gh/vearutop/gocovdiff/branch/master/graph/badge.svg)](https://codecov.io/gh/vearutop/gocovdiff)
 
 A tool to annotate Go code coverage for changed statements in GitHub pull requests.
@@ -23,23 +23,23 @@ This case can be handled by reporting global function coverage diff against base
 ## Install
 
 ```
-go install github.com/vearutop/gocovdiff@latest
+go install github.com/subhambhardwaj/gocovdiff@latest
 $(go env GOPATH)/bin/gocovdiff --help
 ```
 
-Or download binary from [releases](https://github.com/vearutop/gocovdiff/releases).
+Or download binary from [releases](https://github.com/subhambhardwaj/gocovdiff/releases).
 
 ### Linux AMD64
 
 ```
-wget https://github.com/vearutop/gocovdiff/releases/latest/download/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && rm linux_amd64.tar.gz
+wget https://github.com/subhambhardwaj/gocovdiff/releases/latest/download/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && rm linux_amd64.tar.gz
 ./gocovdiff -version
 ```
 
 ### Macos Intel
 
 ```
-wget https://github.com/vearutop/gocovdiff/releases/latest/download/darwin_amd64.tar.gz && tar xf darwin_amd64.tar.gz && rm darwin_amd64.tar.gz
+wget https://github.com/subhambhardwaj/gocovdiff/releases/latest/download/darwin_amd64.tar.gz && tar xf darwin_amd64.tar.gz && rm darwin_amd64.tar.gz
 codesign -s - ./gocovdiff
 ./gocovdiff -version
 ```
@@ -47,7 +47,7 @@ codesign -s - ./gocovdiff
 ### Macos Apple Silicon (M1, etc...)
 
 ```
-wget https://github.com/vearutop/gocovdiff/releases/latest/download/darwin_arm64.tar.gz && tar xf darwin_arm64.tar.gz && rm darwin_arm64.tar.gz
+wget https://github.com/subhambhardwaj/gocovdiff/releases/latest/download/darwin_arm64.tar.gz && tar xf darwin_arm64.tar.gz && rm darwin_arm64.tar.gz
 codesign -s - ./gocovdiff
 ./gocovdiff -version
 ```
@@ -104,7 +104,7 @@ Also, you can comment on the pull request with the report.
         if: github.event.pull_request.base.sha != ''
         run: |
           git fetch origin master ${{ github.event.pull_request.base.sha }}
-          curl -sLO https://github.com/vearutop/gocovdiff/releases/download/v1.3.4/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && echo "b351c67526eefeb0671c82e9271ae984875865eed19e911f40f78348cb98347c  gocovdiff" | shasum -c
+          curl -sLO https://github.com/subhambhardwaj/gocovdiff/releases/download/v1.3.4/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && echo "b351c67526eefeb0671c82e9271ae984875865eed19e911f40f78348cb98347c  gocovdiff" | shasum -c
           REP=$(./gocovdiff -cov unit.coverprofile -gha-annotations gha-unit.txt)
           echo "${REP}"
           REP="${REP//$'\n'/%0A}"
@@ -135,7 +135,7 @@ make test && gocovdiff -cov unit.coverprofile
 ```
 ```
 Running unit tests.
-ok      github.com/vearutop/gocovdiff   0.738s  coverage: 71.9% of statements
+ok      github.com/subhambhardwaj/gocovdiff   0.738s  coverage: 71.9% of statements
 |           File           |      Function       | Coverage |
 |--------------------------|---------------------|----------|
 | Total                    |                     | 71.86%   |

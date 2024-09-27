@@ -1,4 +1,4 @@
-module github.com/vearutop/gocovdiff
+module github.com/subhambhardwaj/gocovdiff
 
 go 1.17
 
