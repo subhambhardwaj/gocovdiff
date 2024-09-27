@@ -175,6 +175,7 @@ fileLoop:
 		}
 
 		modified[f.NewName] = lines
+		log.Println("File added to modified:", f.NewName)
 	}
 
 	testedFiles := map[string]bool{}
@@ -189,6 +190,7 @@ fileLoop:
 
 		lines, ok := modified[fn]
 		if !ok {
+			log.Println("File not found in GO MODIFIED diff:", fn)
 			return
 		}
 
