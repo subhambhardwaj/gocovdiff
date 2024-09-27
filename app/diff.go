@@ -14,10 +14,10 @@ func gitDiff(forkPoint string) ([]byte, error) {
 
 	if forkPoint == "" {
 		if eventPath := os.Getenv("GITHUB_EVENT_PATH"); eventPath != "" {
-			fmt.Println("Using fork point from GitHub event")
+			log.Println("Using fork point from GitHub event")
 			forkPoint, err = forkPointFromGitHub(eventPath)
 		} else {
-			fmt.Println("Using fork point from local")
+			log.Println("Using fork point from local")
 			forkPoint, err = forkPointFromLocal()
 		}
 
@@ -52,6 +52,7 @@ func getDiff(diffFile string, parentCommit string) (*diffparser.Diff, error) {
 		d = df
 	}
 
+	log.Println("DIFF CAT HERE: ", string(d))
 	diff, err := diffparser.Parse(string(d))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse git diff: %w", err)
