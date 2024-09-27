@@ -183,11 +183,13 @@ fileLoop:
 	covStmt := 0
 	fileCoverage := map[string]stat{}
 
+	log.Println("MODIFIED ARRAY BEFORE PARSE:", modified)
 	err = parseProfiles(f.covFile, func(fn string, block profileBlock) {
 		fn = strings.TrimPrefix(fn, f.module+"/")
 		testedFiles[fn] = true
 		fStat := fileCoverage[fn]
 
+		log.Println("MODIFIED ARRAY INSIDE PARSE:", modified)
 		lines, ok := modified[fn]
 		if !ok {
 			log.Println("File not found in GO MODIFIED diff:", fn)
@@ -253,6 +255,7 @@ fileLoop:
 		return fmt.Errorf("failed to parse profiles: %w", err)
 	}
 
+	log.Println("MODIFIED ARRAY AFTER PARSE:", modified)
 	files := make([]string, 0, len(modified))
 	for fn := range modified {
 		files = append(files, fn)
