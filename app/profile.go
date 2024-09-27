@@ -63,6 +63,7 @@ func parseProfiles(fileName string, cb func(fn string, block profileBlock)) erro
 		}
 
 		fn := m[1]
+		log.Println("REGEX MATCH FN: ", fn)
 
 		pb := profileBlock{
 			StartLine: toInt(m[2]),
