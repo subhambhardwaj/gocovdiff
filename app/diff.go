@@ -14,8 +14,10 @@ func gitDiff(forkPoint string) ([]byte, error) {
 
 	if forkPoint == "" {
 		if eventPath := os.Getenv("GITHUB_EVENT_PATH"); eventPath != "" {
+			fmt.Println("Using fork point from GitHub event")
 			forkPoint, err = forkPointFromGitHub(eventPath)
 		} else {
+			fmt.Println("Using fork point from local")
 			forkPoint, err = forkPointFromLocal()
 		}
 

@@ -196,10 +196,12 @@ fileLoop:
 		for i := block.StartLine; i <= block.EndLine; i++ {
 			l, ok := lines[i]
 			if !ok {
+				fmt.Fprintln(os.Stderr, "line not found in diff:", fn, i)
 				continue
 			}
 
 			if !totCounted {
+				fmt.Println("Counting total statements for", fn)
 				totStmt += block.NumStmt
 				fStat.totStmt += block.NumStmt
 
