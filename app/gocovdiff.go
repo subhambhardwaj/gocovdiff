@@ -114,6 +114,7 @@ func run(f flags, report io.Writer) (err error) {
 			return fmt.Errorf("failed to get module name: %w", err)
 		}
 
+		log.Println("MODULE NAME: ", strings.TrimSpace(string(o)))
 		f.module = strings.TrimSpace(string(o))
 	}
 
@@ -175,7 +176,6 @@ fileLoop:
 		}
 
 		modified[f.NewName] = lines
-		log.Println("File added to modified:", f.NewName)
 	}
 
 	testedFiles := map[string]bool{}
@@ -183,7 +183,6 @@ fileLoop:
 	covStmt := 0
 	fileCoverage := map[string]stat{}
 
-	log.Println("MODIFIED ARRAY BEFORE PARSE:", modified)
 	err = parseProfiles(f.covFile, func(fn string, block profileBlock) {
 		log.Println("PARSING FILE:", fn)
 		fn = strings.TrimPrefix(fn, f.module+"/")
